@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import styled from "styled-components"
+import Cadastro from "./pages/Cadastro"
+import Habitos from "./pages/Habitos"
+import Historico from "./pages/Historico"
+import Hoje from "./pages/Hoje"
+import TelaInicial from "./pages/TelaInicial"
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AppContainer>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<TelaInicial />} />
+          <Route path='/cadastro' element={<Cadastro />} />
+          <Route path='/habitos' element={<Habitos />} />
+          <Route path='/hoje' element={<Hoje />} />
+          <Route path='/historico' element={<Historico />} />
+        </Routes>
+      </BrowserRouter>
+    </AppContainer>
+  )
 }
 
-export default App;
+const AppContainer = styled.div`
+
+`
