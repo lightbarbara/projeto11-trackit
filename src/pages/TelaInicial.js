@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import logo from '../assets/logo.png'
 import { BASE_URL } from "../constants/urls"
+import { ThreeDots } from 'react-loader-spinner'
 
 export default function TelaInicial() {
 
@@ -14,6 +15,8 @@ export default function TelaInicial() {
         password: ''
     })
 
+    const [disabled, setDisabled] = useState(false)
+
     function handleForm(e) {
         setForm({
             ...form,
@@ -23,18 +26,31 @@ export default function TelaInicial() {
 
     function login(e) {
         e.preventDefault()
+        setDisabled(true)
         axios.post(`${BASE_URL}/auth/login`, form)
-            .then(res => navigate('/habitos'))
-            .catch(err => console.log(err.response.data))
+            .then(res => navigate('/hoje'))
+            .catch(err => {
+                alert(err.response.data.details)
+                setDisabled(false)
+            })
     }
 
     return (
         <TelaInicialContainer>
             <img src={logo} alt='logo' />
             <Form onSubmit={login}>
-                <input type='email' placeholder='email' value={form.email} name='email' required onChange={handleForm} />
-                <input type='password' placeholder='senha' value={form.password} name='password' required onChange={handleForm} />
-                <button type='submit'>Entrar</button>
+                <input disabled={disabled} type='email' placeholder='email' value={form.email} name='email' required onChange={handleForm} />
+                <input disabled={disabled} type='password' placeholder='senha' value={form.password} name='password' required onChange={handleForm} />
+                <button disabled={disabled} type='submit'>{disabled ? <ThreeDots
+                    height="10"
+                    width="375"
+                    radius="9"
+                    color="white"
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{}}
+                    wrapperClassName=""
+                    visible={true}
+                /> : 'Entrar'}</button>
             </Form>
             <Link to='/cadastro'><p>Não tem uma conta? Cadastre-se!</p></Link>
         </TelaInicialContainer>
