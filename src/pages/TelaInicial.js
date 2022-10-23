@@ -1,10 +1,11 @@
 import axios from "axios"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import logo from '../assets/logo.png'
 import { BASE_URL } from "../constants/urls"
 import { ThreeDots } from 'react-loader-spinner'
+import { AppContext } from "../contexts/AppContext"
 
 export default function TelaInicial() {
 
@@ -17,6 +18,8 @@ export default function TelaInicial() {
 
     const [disabled, setDisabled] = useState(false)
 
+    const { setUser } = useContext(AppContext)
+
     function handleForm(e) {
         setForm({
             ...form,
@@ -28,7 +31,11 @@ export default function TelaInicial() {
         e.preventDefault()
         setDisabled(true)
         axios.post(`${BASE_URL}/auth/login`, form)
-            .then(res => navigate('/hoje'))
+            .then(res => {
+                setUser(res.data)
+                console.log(res.data)
+                navigate('/hoje')
+            })
             .catch(err => {
                 alert(err.response.data.details)
                 setDisabled(false)
