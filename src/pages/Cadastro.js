@@ -75,5 +75,16 @@ background-color: white;
 
 const Form = styled.form`
 display: flex;
-flex-direction: column
+flex-direction: column;
+
+button {
+    width: 303px;
+    height: 45px;
+    background-color: #52B6FF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 21px;
+    cursor: pointer;
+}
 `

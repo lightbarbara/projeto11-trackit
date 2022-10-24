@@ -14,6 +14,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font: inherit;
     vertical-align: baseline;
 }
+
+body {
+    width: 375px;
+    margin: 0 auto
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
@@ -60,17 +66,6 @@ input {
 
 input::placeholder {
     color: #DBDBDB;
-}
-
-button {
-    width: 303px;
-    height: 45px;
-    background-color: #52B6FF;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 21px;
-    cursor: pointer;
 }
 `
 

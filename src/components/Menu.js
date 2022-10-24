@@ -23,7 +23,8 @@ export default function Menu() {
                         textColor: "white",
                         pathColor: "white",
                         textSize: '18px',
-                        trailColor: "transparent"
+                        fontFamily: 'Lexend Deca',
+                        trailColor: "transparent",
                     })}
                 />
             </div>
@@ -39,9 +40,9 @@ align-items: center;
 height: 70px;
 width: inherit;
 background-color: white;
-position: absolute;
+position: fixed;
 bottom: 0;
-left: 0;
+left: auto;
 
 a {
     text-decoration: none;
@@ -59,5 +60,6 @@ a {
     color: white;
     position: relative;
     cursor: pointer;
+    font-family: 'Lexend Deca', sans-serif;
 }
 `

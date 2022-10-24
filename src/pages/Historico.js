@@ -17,6 +17,7 @@ export default function Historico() {
 }
 
 const HistoricoContainer = styled.div`
+display: flex;
 margin: 0 auto;
 flex-direction: column;
 width: 375px;
