@@ -20,7 +20,6 @@ export default function Habitos() {
         name: '',
         days: days
     })
-
     const [disabled, setDisabled] = useState(false)
 
     function handleForm(e) {
@@ -40,17 +39,23 @@ export default function Habitos() {
         axios.get(`${BASE_URL}/habits`, config)
             .then(res => setHabitos(res.data))
             .catch(err => console.log(err.response.data))
-    })
+    }, [])
 
     function alteraDias(dia, e) {
         e.preventDefault()
         if (days.includes(dia)) {
             const novoDays = days.filter(d => d !== dia)
             setDays(novoDays)
-            console.log(novoDays)
+            setForm({
+                ...form,
+                days: novoDays
+            })
         } else {
             setDays([...days, dia])
-            console.log([...days, dia])
+            setForm({
+                ...form,
+                days: [...days, dia]
+            })
         }
     }
 
@@ -64,6 +69,7 @@ export default function Habitos() {
         setDisabled(true)
         axios.post(`${BASE_URL}/habits`, form, config)
             .then(res => {
+                setHabitos([...habitos, form])
                 setDays([])
                 setForm({
                     name: '',
