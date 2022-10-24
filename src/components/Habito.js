@@ -1,12 +1,42 @@
+import axios from "axios"
+import { useContext } from "react"
 import styled from "styled-components"
 import lixo from '../assets/lixo.png'
+import { BASE_URL } from "../constants/urls"
+import { AppContext } from "../contexts/AppContext"
 
-export default function Habito({ name, days }) {
+export default function Habito({ name, days, id, setDeleta, deleta }) {
+
+    const { user, setHabitos, habitos } = useContext(AppContext)
+
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${user.token}`
+        }
+    }
+
+    function deletarHabito() {
+
+        const choice = window.confirm(
+            "Você deseja apagar o hábito?"
+        )
+        
+        if (choice) {
+            axios.delete(`${BASE_URL}/habits/${id}`, config)
+            .then(res => {
+                const newHabitos = habitos.filter(h => h !== id)
+                setHabitos(newHabitos)
+                setDeleta(!deleta)
+            })
+            .catch(err => alert(err.response.data.message))
+        }
+    }
+
     return (
-        <HabitoContainer days={days}>
+        <HabitoContainer>
             <div>
                 <p>{name}</p>
-                <img src={lixo} alt='lixeira' />
+                <img src={lixo} alt='lixeira' onClick={deletarHabito} />
             </div>
             <div>
                 <Dia days={days} nome={0}>D</Dia>
@@ -46,6 +76,7 @@ gap: 10px;
     img {
         height: 15px;
         width: 13px;
+        cursor: pointer;
     }
 }
 

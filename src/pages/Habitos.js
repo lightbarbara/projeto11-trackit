@@ -22,6 +22,8 @@ export default function Habitos() {
     })
     const [disabled, setDisabled] = useState(false)
 
+    const [deleta, setDeleta] = useState(false)
+
     function handleForm(e) {
         setForm({
             ...form,
@@ -39,7 +41,7 @@ export default function Habitos() {
         axios.get(`${BASE_URL}/habits`, config)
             .then(res => setHabitos(res.data))
             .catch(err => console.log(err.response.data))
-    }, [])
+    }, [novoHabito, deleta])
 
     function alteraDias(dia, e) {
         e.preventDefault()
@@ -69,7 +71,6 @@ export default function Habitos() {
         setDisabled(true)
         axios.post(`${BASE_URL}/habits`, form, config)
             .then(res => {
-                setHabitos([...habitos, form])
                 setDays([])
                 setForm({
                     name: '',
@@ -83,7 +84,7 @@ export default function Habitos() {
                 setDisabled(false)
             })
     }
-
+    console.log(habitos)
     return (
         <HabitosContainer>
             <Topo />
@@ -121,7 +122,7 @@ export default function Habitos() {
                 ''
             }
             {habitos.length > 0 ?
-                habitos.map(h => <Habito name={h.name} days={h.days} />)
+                habitos.map(h => <Habito name={h.name} days={h.days} id={h.id} setDeleta={setDeleta} deleta={deleta} />)
                 :
                 <p>
                     Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
