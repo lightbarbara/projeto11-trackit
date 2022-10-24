@@ -66,6 +66,7 @@ export default function TelaInicial() {
 
 const TelaInicialContainer = styled.div`
 display: flex;
+margin: 0 auto;
 flex-direction: column;
 width: 375px;
 height: 100vh;

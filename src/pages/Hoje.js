@@ -17,5 +17,12 @@ export default function Hoje() {
 }
 
 const HojeContainer = styled.div`
-
+margin: 0 auto;
+flex-direction: column;
+width: 375px;
+height: 100vh;
+align-items: center;
+gap: 30px;
+background-color: #F2F2F2;
+position: relative;
 `

@@ -19,8 +19,10 @@ export default function App() {
     token: ''
   })
 
+  const [concluidas, setConcluidas] = useState(50)
+
   return (
-    <AppContext.Provider value={{user, setUser}}>
+    <AppContext.Provider value={{user, setUser, concluidas, setConcluidas}}>
       <BrowserRouter>
         <GlobalStyle />
         <Routes>

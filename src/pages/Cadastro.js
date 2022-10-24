@@ -63,6 +63,7 @@ export default function Cadastro() {
 
 const CadastroContainer = styled.div`
 display: flex;
+margin: 0 auto;
 flex-direction: column;
 width: 375px;
 height: 100vh;

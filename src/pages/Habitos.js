@@ -23,5 +23,6 @@ width: 375px;
 height: 100vh;
 align-items: center;
 gap: 30px;
-background-color: white
+background-color: #F2F2F2;
+position: relative;
 `
