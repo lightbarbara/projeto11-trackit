@@ -84,7 +84,6 @@ export default function Habitos() {
                 setDisabled(false)
             })
     }
-    console.log(habitos)
     return (
         <HabitosContainer>
             <Topo />
@@ -145,7 +144,7 @@ position: relative;
 padding: 70px 18px;
 padding-bottom: 110px;
 box-sizing: border-box;
-overflow: scroll;
+overflow: auto;
 
 &::-webkit-scrollbar {
     display: none;

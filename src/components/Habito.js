@@ -61,6 +61,7 @@ background-color: white;
 padding: 10px;
 box-sizing: border-box;
 gap: 10px;
+border-radius: 5px;
 
 & > div:nth-child(1) {
     display: flex;

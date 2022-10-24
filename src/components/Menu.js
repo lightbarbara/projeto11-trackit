@@ -1,5 +1,5 @@
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import "react-circular-progressbar/dist/styles.css";
 import { useContext } from "react";
@@ -7,7 +7,7 @@ import { AppContext } from "../contexts/AppContext";
 
 export default function Menu() {
 
-    const { concluidas } = useContext(AppContext)
+    const { concluidas, hoje } = useContext(AppContext)
 
     const navigate = useNavigate()
 
@@ -16,7 +16,7 @@ export default function Menu() {
             <p onClick={() => navigate('/habitos')}>Hábitos</p>
             <div onClick={() => navigate('/hoje')}>
                 <CircularProgressbar
-                    value={concluidas}
+                    value={(concluidas.length/hoje.length).toFixed(2)*100}
                     text='Hoje'
                     background
                     backgroundPadding={6}

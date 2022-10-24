@@ -19,12 +19,14 @@ export default function App() {
     token: ''
   })
 
-  const [concluidas, setConcluidas] = useState(50)
+  const [concluidas, setConcluidas] = useState([])
 
   const [habitos, setHabitos] = useState([])
 
+  const [hoje, setHoje] = useState([])
+
   return (
-    <AppContext.Provider value={{user, setUser, concluidas, setConcluidas, habitos, setHabitos}}>
+    <AppContext.Provider value={{ user, setUser, concluidas, setConcluidas, habitos, setHabitos, hoje, setHoje }}>
       <BrowserRouter>
         <GlobalStyle />
         <Routes>
